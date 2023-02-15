@@ -1,3 +1,5 @@
+package src;
+
 import java.security.SecureRandom;
 
 public class DeckOfCards {
@@ -10,8 +12,8 @@ public class DeckOfCards {
     //constructor fill deck of Cards
     public DeckOfCards()
     {
-        String[] faces = { "Ace", "Deuce", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Nine", "Ten", "Jack", " Queen", " King" };
-        String[] suits = { "Hearts", "Duiamonds", "Clubs", "Spades" };
+        String[] faces = { "Ace", "Deuce", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Nine", "Ten", "Jack", "Queen", " King" };
+        String[] suits = { "Hearts", "Diamonds", "Clubs", "Spades" };
 
         deck = new Card[NUMBER_OF_CARDS]; //Create an array of card Objects
         currentCard = 0; //first Card dealt with will be deck[0]
@@ -21,24 +23,43 @@ public class DeckOfCards {
             deck[count] = new Card(faces[count % 13], suits[count / 13]);
     }
 
-    //shuffle deck fo cards with one pass algorithm
+    //shuffle deck of cards with one pass algorithm
     public void shuffle()
     {
-        //next call to method dealCard should start at deck[0] again
-        currentCard = 0;
-
-        //for each card, pick another random Card(0-51) and swap them
-        for (int first = 0; first< deck.length; first++)
+//      Fisher-Yates Shuffling Algorithm
+        int last_index = deck.length - 1;
+        while (last_index > 0)
         {
-            //select random number between 0 and 51
-            int second  = randomNumbers.nextInt(NUMBER_OF_CARDS);
-
-            //swap the current Crd with randomly Selected Card
-            Card temp = deck[first];
-            deck[first] = deck[second];
-            deck[second] = temp;
+            int rand_index  = randomNumbers.nextInt(NUMBER_OF_CARDS);
+            Card temp = deck[last_index];
+            deck[last_index] = deck[rand_index];
+            deck[rand_index] = temp;
+            last_index -= 1;
         }
+
+//        Previous Method
+//        //next call to method dealCard should start at deck[0] again
+//        currentCard = 0;
+//
+//        //for each card, pick another random Card(0-51) and swap them
+//        for (int first = 0; first < deck.length; first++)
+//        {
+//            //select random number between 0 and 51
+//            int second  = randomNumbers.nextInt(NUMBER_OF_CARDS);
+//            //swap the current Card with randomly Selected Card
+//            Card temp = deck[first];
+//            deck[first] = deck[second];
+//            deck[second] = temp;
+//        }
     }
 
     //deal one card
-}
+    public Card dealCard()
+    {
+        //determine whether Cards remain to be dealt
+        if(currentCard < deck.length)
+            return deck[currentCard++]; //return crrent Card in Array
+        else
+            return null; //return null to indicate that all Cards were dealt
+    }
+} //end class DeckOfCards

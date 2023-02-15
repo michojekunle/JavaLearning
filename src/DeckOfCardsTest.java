@@ -1,6 +1,9 @@
+package src;
+
 public class DeckOfCardsTest
 {
-    public static void main(String[] args)
+    public static void main(
+            String[] args)
     {
         DeckOfCards myDeckOfCards = new DeckOfCards();
         myDeckOfCards.shuffle(); //place the cards in random order

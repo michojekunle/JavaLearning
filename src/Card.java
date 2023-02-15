@@ -1,3 +1,5 @@
+package src;
+
 public class Card {
     private final String face; //face of card ("Ace", "Deuce", ...)
     private final String suit; //suit of card ("Hearts", "Diamonds", ...)
@@ -10,6 +12,6 @@ public class Card {
     //Return the String Representation of Card
     public String toString()
     {
-        return face + " of" + suit;
+        return face + " of " + suit;
     }
 }//end class Card
