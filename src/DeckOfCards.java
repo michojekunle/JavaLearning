@@ -30,12 +30,15 @@ public class DeckOfCards {
         //for each card, pick another random Card(0-51) and swap them
         for (int first = 0; first< deck.length; first++)
         {
-            //select random number beetween 0 and 51
+            //select random number between 0 and 51
             int second  = randomNumbers.nextInt(NUMBER_OF_CARDS);
 
-            //swap he current Crd with randomly Selected Card
+            //swap the current Crd with randomly Selected Card
             Card temp = deck[first];
-
+            deck[first] = deck[second];
+            deck[second] = temp;
         }
     }
+
+    //deal one card
 }
