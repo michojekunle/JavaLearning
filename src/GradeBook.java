@@ -101,7 +101,7 @@ public class GradeBook {
             if(count == 10)
                 System.out.printf("%5d: ", 100);
             else
-                System.out.printf("%02d-%02d", count * 10, count * 10 + 9);
+                System.out.printf("%02d-%02d: ", count * 10, count * 10 + 9);
             
             //print bar of asterisks
             for(int stars = 0; stars < frequency[count]; stars++)

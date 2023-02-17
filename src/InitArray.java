@@ -1,3 +1,5 @@
+package src;
+
 public class InitArray {
     public static void main(String[] args) {
 //        Declare variables and initialize it with an array object
